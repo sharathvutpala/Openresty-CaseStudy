@@ -82,5 +82,5 @@ ansible-playbook nagios.yml
 ### Stop openresty container and wait for sometime and you should receive an email (Please check spam as well)
 
 ```
-ansible-playbook openresty-cnt-stop.yml
+ansible-playbook openresty-stop.yml
 ```
