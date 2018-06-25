@@ -6,7 +6,7 @@
 * Installed terraform in my local machine
 * Installed awscli 
 * Configured the aws credentials for launching the EC2 instance
-* Created a keypair to connect to the EC2 Instance
+* Created a keypair "openresty" to connect to the EC2 Instance
 
 ```
 $ aws configure
@@ -31,7 +31,7 @@ terraform apply
 ```
 
 ### SSH to the launched instance 
-
+```
 ssh -i <aws-ssh-keys> ubuntu@<public-ip>
 
 ```
