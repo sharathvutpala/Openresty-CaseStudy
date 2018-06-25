@@ -42,7 +42,7 @@ ssh -i aws-keys.pem ubuntu@13.232.80.237
 ### Cloned this git repo to the AWS instance
 
 ```
-https://github.com/sharathvutpala/Openresty-CaseStudy.git
+git clone https://github.com/sharathvutpala/Openresty-CaseStudy.git
 ```
 
 
