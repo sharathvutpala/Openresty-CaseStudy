@@ -25,6 +25,7 @@ terraform init
 ``` 
 terraform plan 
 ```  
+
 * If everything is correct we can provision the instance and the other resources that are configured in the template
 ```
 terraform apply
@@ -33,8 +34,6 @@ terraform apply
 ### SSH to the launched instance 
 ```
 ssh -i <aws-ssh-keys> ubuntu@<public-ip>
-
-```
 chmod 400 openresty.pem
 ssh -i aws-keys.pem ubuntu@13.232.80.237
 ```
