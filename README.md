@@ -6,32 +6,28 @@
 * Installed terraform in my local machine
 * Installed awscli 
 * Configured the aws credentials for launching the EC2 instance
+* Created a keypair to connect to the EC2 Instance
 
 ```
 $ aws configure
 
 ```
 
-### Clone this repo in your local machine
+### Provisioning EC2 Instance
+* I used Terraform for provisioning EC2 instance
+* Docker and Ansible are installed in the EC2 instance during the launh with the help of terraform userdata 
+* For launching the instance we need to change to the terraform directory in the repo and need to initialize the process
 
 ```
-git clone https://github.com/madhuchary/openresty-task.git
+terraform init
 ```
-
-### Create security group
-
+* Once the initialization is done we can check the configuration plan using 
+``` 
+terraform plan 
+```  
+* If everything is correct we can provision the instance and the other resources that are configured in the template
 ```
-bash sg-rules.sh
-```
-
-### Launching EC2 Instance.
-
-```
-pip install boto3
-```
-* Launching AWS EC2 Instance using boto3 (AWS SDK for Python)
-```
-ptyhon ec2-launch.py
+terraform apply
 ```
 
 ### SSH to the launched instance 
@@ -39,32 +35,24 @@ ptyhon ec2-launch.py
 ssh -i <aws-ssh-keys> ubuntu@<public-ip>
 
 ```
-chmod 400 aws-keys
-ssh -i aws-keys.pem ubuntu@54.186.177.39
+chmod 400 openresty.pem
+ssh -i aws-keys.pem ubuntu@13.232.80.237
 ```
 
-### Clone git repo to your AWS instance
+### Cloned this git repo to the AWS instance
 
 ```
-git clone https://github.com/madhuchary/openresty-task.git
+https://github.com/sharathvutpala/Openresty-CaseStudy.git
 ```
 
-## CD to the cloned directory and execute the below commands 
 
-### Install Docker CE 
-
-```
-cd openresty-task
-bash install-docker.sh
-```
-
-### Build openresty debian package
+### Building openresty debian package
 
 ```
 bash build_openresty_deb_pkg.sh
 ```
 
-### Build docker image 
+### Building docker image 
 
 ```
 cd docker 
@@ -75,13 +63,13 @@ docker build -t openresty .
 
 ```
 cd ..
-ansible-playbook openresty-cnt-start.yml
+ansible-playbook openresty-start.yml
 ```
 
 ### Stopping the container
 
 ```
-ansible-playbook openresty-cnt-stop.yml
+ansible-playbook openresty-stop.yml
 ```
 
 ### Installing nagios and monitoring openresty
